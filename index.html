@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="NEXUS AI 大学人工智能协会官方网站。一起读论文、训练模型、做真实项目，在校园里探索智能的边界。">
   <meta name="theme-color" content="#07090e">
   <title>NEXUS AI · 大学人工智能协会</title>
@@ -81,7 +81,7 @@
             <span class="theme-toggle-label--to-dark">深色</span>
           </span>
         </button>
-        <a class="header-join" href="#join">
+        <a class="header-join" href="apply.html">
           加入我们
           <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
         </a>
@@ -94,7 +94,7 @@
             <a href="#projects"><span>02</span>项目进度</a>
             <a href="#activities"><span>03</span>活动公告</a>
             <a href="#resources"><span>04</span>学习资料</a>
-            <a class="mobile-join" href="#join">加入 NEXUS <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            <a class="mobile-join" href="apply.html">加入 NEXUS <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           </nav>
         </details>
       </div>
@@ -123,7 +123,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#join">
+            <a class="button button-primary" href="apply.html">
               <span>成为 NEXUS 成员</span>
               <span class="button-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
@@ -402,7 +402,7 @@
                 <span class="avatar avatar--more">+3</span>
               </div>
               <span class="team-note">7 位成员 · 产品 / 算法 / 设计</span>
-              <span class="project-open">OPEN TEAM <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+              <a class="project-open" href="apply.html?team=KITE" aria-label="申请加入 KITE 项目组">OPEN TEAM <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             </div>
           </div>
 
@@ -536,7 +536,7 @@
           <h2 class="display-title">这个学期，<br>一起做点<span class="accent-word">新鲜的</span>。</h2>
           <div class="heading-aside">
             <p>工作坊、论文共读、黑客松与开放麦。我们相信最好的学习，发生在人和人真正碰面的时候。</p>
-            <span class="event-count"><i></i>本月还有 4 场活动</span>
+            <span class="event-count"><i></i>本月还有 5 场活动</span>
           </div>
         </div>
 
@@ -572,10 +572,10 @@
                 </div>
               </div>
               <div class="event-action-row">
-                <button class="event-button" type="button">
+                <a class="event-button" href="events.html#featured">
                   查看详情与报名
                   <span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
-                </button>
+                </a>
                 <span class="event-note">提供晚餐 · 带上电脑</span>
               </div>
             </div>
@@ -613,7 +613,7 @@
               <span>UP NEXT</span>
             </div>
 
-            <article class="mini-event">
+            <a class="mini-event" href="events.html#calendar">
               <div class="mini-date"><strong>14</strong><span>NOV / 周六</span></div>
               <div class="mini-info">
                 <span class="mini-type mini-type--mint">PAPER CLUB</span>
@@ -621,9 +621,9 @@
                 <p>计科楼 302 · 14:00 — 16:00</p>
               </div>
               <span class="mini-arrow">↗</span>
-            </article>
+            </a>
 
-            <article class="mini-event">
+            <a class="mini-event" href="events.html#calendar">
               <div class="mini-date"><strong>18</strong><span>NOV / 周三</span></div>
               <div class="mini-info">
                 <span class="mini-type mini-type--violet">TALK</span>
@@ -631,9 +631,9 @@
                 <p>线上 · 腾讯会议 · 19:30</p>
               </div>
               <span class="mini-arrow">↗</span>
-            </article>
+            </a>
 
-            <article class="mini-event">
+            <a class="mini-event" href="events.html#calendar">
               <div class="mini-date"><strong>28</strong><span>NOV / 周六</span></div>
               <div class="mini-info">
                 <span class="mini-type mini-type--orange">HACKATHON</span>
@@ -641,13 +641,13 @@
                 <p>学生创新中心 · 全天</p>
               </div>
               <span class="mini-arrow">↗</span>
-            </article>
+            </a>
 
-            <button class="calendar-button" type="button">
+            <a class="calendar-button" href="events.html#calendar">
               浏览完整活动日历
               <span class="calendar-line"></span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
-            </button>
+            </a>
           </aside>
         </div>
 
@@ -657,25 +657,121 @@
             <h3>需要知道的事</h3>
           </div>
           <div class="notice-list">
-            <div class="notice-row">
+            <a class="notice-row" href="events.html#calendar">
               <span class="notice-date">11.08</span>
               <span class="notice-tag">LAB</span>
               <p>NEXUS Lab 十一月开放日预约开启，工位与 GPU 时段可申请。</p>
               <span class="notice-arrow">↗</span>
-            </div>
-            <div class="notice-row">
+            </a>
+            <a class="notice-row" href="events.html#calendar">
               <span class="notice-date">11.12</span>
               <span class="notice-tag">MATERIAL</span>
               <p>Paper Club #12 阅读材料与预习问题已上传至学习资料库。</p>
               <span class="notice-arrow">↗</span>
-            </div>
-            <div class="notice-row">
+            </a>
+            <a class="notice-row" href="events.html#honor">
+              <span class="notice-date">11.13</span>
+              <span class="notice-tag">SIGNUP</span>
+              <p>荣耀技术分享公开课开放报名：11.13 宝山校区 J202，AI PC 技术与创新赛宣讲。</p>
+              <span class="notice-arrow">↗</span>
+            </a>
+            <a class="notice-row" href="events.html#calendar">
               <span class="notice-date">11.18</span>
               <span class="notice-tag">RECRUIT</span>
               <p>「具身智能」项目组开放 2 个设计方向名额，欢迎跨专业同学加入。</p>
               <span class="notice-arrow">↗</span>
-            </div>
+            </a>
           </div>
+        </div>
+
+        <div class="news-board">
+          <div class="news-head">
+            <div>
+              <span class="micro-label">COMMUNITY NEWS / 社团动态</span>
+              <h3>上海大学人工智能社团近期活动</h3>
+            </div>
+            <span class="news-source-note">来源：通信与信息工程学院公开报道</span>
+          </div>
+          <div class="news-list">
+            <a class="news-item" href="https://mp.weixin.qq.com/s/IxySFEBMgejzcBQJ8rgkYQ" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.10.23</strong>团日</div>
+              <div class="news-copy">
+                <h4>「焊动金秋 · 烙铁生花」主题团日活动</h4>
+                <p>人工智能社团与通信学院 2026 级理工Ⅲ类 4 班在翔英大楼 T406 联合举办。社长任捷讲解电烙铁握持、送锡方法与焊点成形要点，学术部部长曹健宇展示机器小车项目；同学们从练习板单点焊接，练到导线焊接与连接。</p>
+                <div class="news-tags">
+                  <span class="news-tag">动手实践</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 撰稿 黄忻</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1066/46645.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.06.05</strong>分享会</div>
+              <div class="news-copy">
+                <h4>第一届人工智能社团青年分享会：什么是 AI Agent</h4>
+                <p>在翔英大楼 608 创客空间线上线下同步举行，二十余名同学参加。副社长张霖昊主讲 AI Agent 的概念边界、产业落地与科研方向。</p>
+                <div class="news-tags">
+                  <span class="news-tag">分享会</span>
+                  <span class="news-origin">学院新闻 · 2026.06.08</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1065/46345.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.04.10</strong>竞赛</div>
+              <div class="news-copy">
+                <h4>上海大学 2025 年人工智能创新大赛决赛</h4>
+                <p>15 支队伍在翔英大楼 T608 同台竞技，项目覆盖自然语言处理、金融科技、智能驾驶、智能医疗等方向；通信学院承办、人工智能社团协办。</p>
+                <div class="news-tags">
+                  <span class="news-tag">竞赛</span>
+                  <span class="news-origin">学院新闻 · 2026.04.13</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://mp.weixin.qq.com/s/w9l2QzYGAc9RFlvV_PuGpw" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.12.05</strong>实战课</div>
+              <div class="news-copy">
+                <h4>「昇腾赋能 · 深度学习实战进阶」实战课</h4>
+                <p>翔英大楼 608，往届社长、2022 级通信工程黄旺文主讲：从昇腾 AI 全栈与昇思框架讲起，带同学完成环境配置、深度估计模型搭建与昇腾推理，实现单图到视频流的深度预测。</p>
+                <div class="news-tags">
+                  <span class="news-tag">实战课</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 2025.12.09</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://mp.weixin.qq.com/s/w5xcUtydAPP6TCk1WVrcMQ" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.11.29</strong>众测</div>
+              <div class="news-copy">
+                <h4>华为鲲鹏 BoostKit 高校开发者众测 · 上海站</h4>
+                <p>赴华为上海练秋湖研发中心，与全市多所高校开发者一起完成 Hyperscan 正则匹配、鲲鹏数据库异步优化与 KBest 图检索算法实践；参与者获体验证书，部分同学获「金点子奖」。</p>
+                <div class="news-tags">
+                  <span class="news-tag">众测</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 2025.12.03</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1066/45485.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.11.22</strong>实践</div>
+              <div class="news-copy">
+                <h4>走进华为鸿蒙生态学堂上海站</h4>
+                <p>近百名社团成员参加鸿蒙生态宣讲、开发者分享与实训体验，并围绕「AI + 鸿蒙」与华为技术专家面对面交流。</p>
+                <div class="news-tags">
+                  <span class="news-tag">实践</span>
+                  <span class="news-origin">学院新闻 · 2025.11.25</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="news-foot">以上信息整理自通信与信息工程学院官网公开报道与学院融媒体部推文：官网报道可点击查看原文，公众号文章需在微信客户端内打开。</p>
         </div>
       </div>
     </section>
@@ -728,7 +824,7 @@
                 <li><span>03</span><p>深度学习与 Transformer</p><em>8 周</em></li>
                 <li><span>04</span><p>选择方向，开始做项目</p><em>持续</em></li>
               </ol>
-              <button class="path-button" type="button">查看完整学习路线 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></button>
+              <a class="path-button" href="path.html">查看完整学习路线 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             </div>
           </aside>
 
@@ -820,7 +916,7 @@
 
             <div class="resource-bottom">
               <span>找不到需要的资料？</span>
-              <button type="button">向知识库提交资源建议 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></button>
+              <a href="suggest.html">向知识库提交资源建议 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             </div>
           </div>
         </div>
@@ -844,12 +940,12 @@
             </div>
 
             <div class="join-action-block">
-              <button class="join-disc" type="button" aria-label="填写入社申请">
+              <a class="join-disc" href="apply.html" aria-label="填写入社申请">
                 <span class="disc-cn">申请加入</span>
                 <span class="disc-label">APPLY<br>NOW</span>
                 <span class="disc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
                 <span class="disc-ring" aria-hidden="true"></span>
-              </button>
+              </a>
               <div class="join-deadline">
                 <span>申请截止</span>
                 <strong>11.30 / 24:00</strong>
@@ -926,6 +1022,7 @@
   </footer>
   <script src="particle-net.js" defer></script>
   <script src="theme.js" defer></script>
+  <script src="nav.js" defer></script>
   <script src="particles.js" defer></script>
 </body>
 </html>

@@ -146,7 +146,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 280px;
   margin: 0;
   overflow-x: clip;
   background:
@@ -3886,7 +3886,8 @@ main,
   font-size: 8.5px;
 }
 
-.resource-bottom button {
+.resource-bottom button,
+.resource-bottom a {
   display: inline-flex;
   align-items: center;
   color: var(--muted);
@@ -3896,7 +3897,8 @@ main,
   transition: color 0.25s ease;
 }
 
-.resource-bottom button:hover {
+.resource-bottom button:hover,
+.resource-bottom a:hover {
   color: var(--ink);
 }
 
@@ -6277,6 +6279,851 @@ main,
 
   .header-actions {
     gap: 8px;
+  }
+}
+
+/* =========================================================
+   COMMUNITY NEWS
+   Real activity reports about the Shanghai University AI club,
+   sourced from the college website (published links only).
+   ========================================================= */
+
+.news-board {
+  margin-top: 12px;
+  padding: clamp(20px, 2.6vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(165deg, rgba(var(--overlay-rgb), 0.022), transparent 46%),
+    var(--surface);
+}
+
+.news-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 16px;
+}
+
+.news-head h3 {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.news-source-note {
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.news-list {
+  display: grid;
+  margin-top: 8px;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-top: 1px solid var(--line-soft);
+  gap: 14px;
+  transition: transform 0.25s var(--ease);
+}
+
+.news-item:first-child {
+  border-top: 0;
+}
+
+.news-item:hover {
+  transform: translateX(3px);
+}
+
+.news-date {
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+.news-date strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.news-copy h4 {
+  margin: 0 0 5px;
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: color 0.25s ease;
+}
+
+.news-item:hover .news-copy h4 {
+  color: var(--accent);
+}
+
+.news-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
+  gap: 6px 10px;
+}
+
+.news-tag {
+  padding: 3px 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+}
+
+.news-origin {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.news-arrow {
+  color: var(--icon-accent);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.news-foot {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--faint);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .news-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .news-source-note {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .news-item {
+    grid-template-columns: minmax(0, 1fr) 14px;
+    gap: 8px 12px;
+  }
+
+  .news-date {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .news-date strong {
+    display: inline;
+    margin: 0;
+    font-size: 10.5px;
+  }
+
+  .news-copy h4 {
+    font-size: 13.5px;
+  }
+
+  .news-copy p {
+    font-size: 12px;
+  }
+
+  .news-foot {
+    font-size: 10.5px;
+  }
+}
+
+/* =========================================================
+   DUAL-DEVICE ADAPTATION
+   Phone + desktop refinement layer. Sits after the breakpoint
+   system above and covers:
+   - safe-area insets (notch, gesture bar)
+   - readable type sizes on phones
+   - 44px touch targets
+   - fold-phone (280-360px) and landscape-phone layouts
+   - hover effects limited to real pointers
+   ========================================================= */
+
+/* ---------- 1. Viewport safety ---------- */
+
+html {
+  scroll-padding-top: calc(102px + env(safe-area-inset-top));
+}
+
+.container {
+  padding-right: max(var(--page-pad), env(safe-area-inset-right));
+  padding-left: max(var(--page-pad), env(safe-area-inset-left));
+}
+
+.header-inner {
+  padding-right: max(var(--page-pad), env(safe-area-inset-right));
+  padding-left: max(var(--page-pad), env(safe-area-inset-left));
+}
+
+.site-header {
+  padding-top: env(safe-area-inset-top);
+}
+
+.site-footer {
+  padding-bottom: calc(25px + env(safe-area-inset-bottom));
+}
+
+a,
+button,
+summary {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- 2. Touch layouts: 44px targets, scrollable menu ---------- */
+
+@media (max-width: 1024px) {
+  .theme-toggle {
+    min-width: 44px;
+    height: 44px;
+  }
+
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .theme-toggle-label {
+    white-space: nowrap;
+  }
+
+  .mobile-menu summary {
+    width: 44px;
+    height: 44px;
+  }
+
+  .mobile-menu summary svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .header-join {
+    height: 40px;
+  }
+
+  .brand {
+    min-height: 44px;
+  }
+
+  .path-button,
+  .calendar-button {
+    min-height: 44px;
+  }
+
+  .resource-bottom button,
+.resource-bottom a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+  }
+
+  .footer-col a,
+  .social-row,
+  .back-top {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+  }
+
+  .scroll-cue {
+    min-height: 44px;
+  }
+
+  .learning-path {
+    max-width: none;
+  }
+
+  .mobile-menu nav {
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .mobile-menu nav a {
+    min-height: 48px;
+  }
+}
+
+/* ---------- 3. Phone reading scale ---------- */
+
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: calc(78px + env(safe-area-inset-top));
+  }
+
+  .mobile-menu nav {
+    top: calc(76px + env(safe-area-inset-top));
+  }
+
+  .theme-toggle {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+
+  /* Long-form copy */
+  .hero-lede,
+  .about-lead {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .about-detail-cols p,
+  .heading-aside p,
+  .project-desc,
+  .event-desc,
+  .resource-feature p,
+  .join-desc {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .button {
+    font-size: 13px;
+  }
+
+  .status-pill {
+    font-size: 10.5px;
+  }
+
+  /* Stats and section labels */
+  .stat-label {
+    font-size: 10.5px;
+    line-height: 1.45;
+  }
+
+  .section-label {
+    font-size: 9.5px;
+  }
+
+  .section-index {
+    font-size: 8px;
+  }
+
+  .micro-label {
+    font-size: 9.5px;
+  }
+
+  /* Project cards */
+  .project-topline {
+    font-size: 9.5px;
+  }
+
+  .project-status {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .tag-row span {
+    padding: 4px 8px;
+    font-size: 9.5px;
+  }
+
+  .card-foot {
+    font-size: 10px;
+  }
+
+  .progress-meta {
+    font-size: 10px;
+  }
+
+  .progress-head span {
+    font-size: 11px;
+  }
+
+  .project-open {
+    font-size: 9.5px;
+  }
+
+  .project-footer-note {
+    font-size: 9.5px;
+  }
+
+  /* Hero instrument panel (decorative, but kept legible) */
+  .frame-head {
+    font-size: 9px;
+  }
+
+  .foot-label {
+    font-size: 9.5px;
+  }
+
+  .coordinate {
+    font-size: 8px;
+  }
+
+  .orbit-label {
+    padding: 2px 6px;
+    font-size: 7.5px;
+  }
+
+  .orbit-label--b {
+    left: 3%;
+  }
+
+  .preview-label {
+    font-size: 7.5px;
+  }
+
+  .preview-user p,
+  .ai-content > p {
+    font-size: 9px;
+  }
+
+  .preview-cards span {
+    font-size: 6px;
+  }
+
+  .preview-cards strong {
+    font-size: 7.5px;
+  }
+
+  /* Society card */
+  .society-stat span,
+  .society-card-head {
+    font-size: 9.5px;
+  }
+
+  .society-signal,
+  .track-tags span {
+    font-size: 9px;
+  }
+
+  /* Events */
+  .event-topline {
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+
+  .event-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .event-fact span {
+    font-size: 9.5px;
+  }
+
+  .event-fact strong {
+    font-size: 13px;
+  }
+
+  .event-fact small {
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .event-note,
+  .side-heading span {
+    font-size: 9.5px;
+  }
+
+  .mini-info h4 {
+    font-size: 13px;
+  }
+
+  .mini-info p {
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+
+  .mini-date span {
+    font-size: 9px;
+  }
+
+  .mini-type {
+    font-size: 8.5px;
+  }
+
+  .calendar-button {
+    min-height: 46px;
+    font-size: 11.5px;
+  }
+
+  .notice-row p {
+    font-size: 11px;
+    line-height: 1.55;
+    white-space: normal;
+    text-overflow: clip;
+  }
+
+  .notice-date {
+    font-size: 9.5px;
+  }
+
+  .notice-tag {
+    font-size: 8.5px;
+  }
+
+  /* Library */
+  .resource-cat {
+    font-size: 9.5px;
+  }
+
+  .resource-copy h4 {
+    font-size: 13px;
+  }
+
+  .resource-copy p {
+    display: block;
+    font-size: 10.5px;
+    line-height: 1.55;
+  }
+
+  .resource-kind,
+  .resource-read,
+  .resource-updated {
+    font-size: 9.5px;
+  }
+
+  .resource-tags span {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .resource-icon {
+    font-size: 8px;
+  }
+
+  .path-button {
+    min-height: 44px;
+    font-size: 11.5px;
+  }
+
+  .resource-bottom {
+    font-size: 12.5px;
+  }
+
+  .resource-bottom button,
+.resource-bottom a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    font-size: 12.5px;
+  }
+
+  /* Join panel */
+  .join-topline,
+  .join-eyebrow {
+    font-size: 9.5px;
+  }
+
+  .join-tags span {
+    font-size: 10px;
+  }
+
+  .join-deadline span {
+    font-size: 10px;
+  }
+
+  .join-deadline strong {
+    font-size: 12px;
+  }
+
+  .disc-cn {
+    font-size: 10px;
+  }
+
+  /* Footer */
+  .footer-col-title {
+    font-size: 9.5px;
+  }
+
+  .footer-col a,
+  .footer-col > span {
+    font-size: 12.5px;
+  }
+
+  .footer-col .footer-email {
+    font-size: 12px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-brand p {
+    font-size: 12.5px;
+  }
+
+  .footer-est {
+    font-size: 9px;
+  }
+
+  .footer-bottom {
+    font-size: 10px;
+  }
+
+  .back-top {
+    min-height: 38px;
+    font-size: 10.5px;
+  }
+
+  .footer-col {
+    gap: 2px;
+  }
+
+  .footer-col a,
+  .social-row {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+  }
+
+  .social-row i {
+    font-size: 10px;
+  }
+
+  .discipline-group span {
+    font-size: 9px;
+  }
+
+  .society-stat span:last-child {
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+
+  .society-badge {
+    font-size: 8px;
+  }
+
+  .about-signature {
+    font-size: 10px;
+  }
+
+  .scroll-cue {
+    font-size: 10px;
+  }
+
+  .hero-coordinate {
+    font-size: 9.5px;
+  }
+
+  /* Remaining micro labels that carry information */
+  .principle .micro-label {
+    font-size: 9.5px;
+  }
+
+  .project-en {
+    font-size: 9.5px;
+  }
+
+  .progress-compact .progress-head span {
+    font-size: 10.5px;
+  }
+
+  .project-legend span {
+    font-size: 9.5px;
+  }
+
+  .event-count,
+  .resource-note {
+    font-size: 10px;
+  }
+
+  .resource-index-head span {
+    font-size: 9.5px;
+  }
+
+  .resource-category span:last-child {
+    font-size: 9.5px;
+  }
+
+  .learning-path li > span {
+    font-size: 8px;
+  }
+
+  .learning-path li em {
+    font-size: 9.5px;
+  }
+
+  .resource-bottom > span {
+    font-size: 11px;
+  }
+
+  .join-cta-note span {
+    font-size: 10px;
+  }
+}
+
+/* ---------- 4. Small phones ---------- */
+
+@media (max-width: 430px) {
+  .mini-event {
+    grid-template-columns: 54px minmax(0, 1fr);
+  }
+
+  .resource-row {
+    grid-template-columns: 40px minmax(0, 1fr) 16px;
+  }
+
+  .orbit-label--b {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --page-pad: 17px;
+  }
+
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.45rem, 13vw, 3rem);
+  }
+
+  .display-title {
+    font-size: clamp(1.9rem, 9.6vw, 2.45rem);
+  }
+
+  .button {
+    padding-left: 16px;
+  }
+
+  .notice-row {
+    grid-template-columns: 34px minmax(0, 1fr) 12px;
+  }
+
+  .resource-category {
+    font-size: 11.5px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .core-field {
+    height: 268px;
+  }
+
+  .orbit--outer {
+    width: 216px;
+    height: 216px;
+  }
+
+  .orbit--dashed {
+    width: 178px;
+    height: 178px;
+  }
+
+  .orbit--inner {
+    width: 142px;
+    height: 142px;
+  }
+
+  .core-orb {
+    width: 130px;
+    height: 130px;
+  }
+
+  .foot-metric strong {
+    font-size: 14px;
+  }
+
+  .join-tags {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 5. Landscape phones (short viewports) ---------- */
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .hero {
+    padding-top: 26px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+
+  .section {
+    padding-top: 46px;
+    padding-bottom: 46px;
+  }
+
+  .join {
+    padding-top: 54px;
+    padding-bottom: 46px;
+  }
+
+  .mobile-menu nav {
+    max-height: calc(100vh - 130px);
+  }
+}
+
+/* ---------- 6. Pointer-only hover effects ---------- */
+
+@media (hover: none) {
+  .project-card:hover {
+    transform: none;
+  }
+
+  .project-card:hover::after {
+    transform: none;
+  }
+
+  .button-primary:hover,
+  .event-button:hover {
+    transform: none;
+  }
+
+  .button-primary:hover .button-icon svg,
+  .button-ghost:hover .ghost-arrow,
+  .mini-event:hover .mini-arrow,
+  .resource-row:hover .resource-arrow,
+  .join-disc:hover .disc-arrow {
+    transform: none;
+  }
+
+  .notice-row:hover {
+    padding-left: 0;
+  }
+
+  .project-feature:hover .preview-window {
+    transform: none;
+  }
+
+  .project-card:active,
+  .button-primary:active,
+  .event-button:active {
+    transform: scale(0.995);
   }
 }
 
