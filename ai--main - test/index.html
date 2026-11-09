@@ -20,10 +20,99 @@
       if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
     })();
   </script>
+  <script>
+    /* Opening animation gate — runs before first paint so the page
+       never flashes, and disarms itself if intro.js fails to load.
+       Plays once per tab session; a manual reload replays it. */
+    (() => {
+      const root = document.documentElement;
+      let enabled = true;
+      try {
+        const forced = new URLSearchParams(window.location.search).get('intro');
+        if (forced === '1') {
+          enabled = true;
+        } else if (forced === '0') {
+          enabled = false;
+        } else {
+          const entry = window.performance.getEntriesByType('navigation')[0];
+          const isReload = entry ? entry.type === 'reload' : false;
+          enabled = isReload || window.sessionStorage.getItem('nexus-intro-seen') !== '1';
+        }
+      } catch (error) {
+        enabled = true;
+      }
+      if (!enabled) return;
+      root.classList.add('intro-play', 'intro-armed');
+      window.__NEXUS_INTRO__ = { done: false };
+      window.setTimeout(() => {
+        const api = window.__NEXUS_INTRO__;
+        if (api && api.done) return;
+        root.classList.remove('intro-play', 'intro-armed');
+        const splash = document.getElementById('nexus-intro');
+        if (splash) splash.remove();
+      }, 7000);
+    })();
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="intro.css">
 </head>
 <body>
+  <div class="intro" id="nexus-intro">
+    <span class="intro__grid" aria-hidden="true"></span>
+    <span class="intro__dust" aria-hidden="true"></span>
+    <span class="intro__glow" aria-hidden="true"></span>
+    <span class="intro__vignette" aria-hidden="true"></span>
+    <span class="intro__scan" aria-hidden="true"></span>
+    <span class="intro__beamline" aria-hidden="true"></span>
+
+    <div class="intro__frame" aria-hidden="true">
+      <span class="intro__corner intro__corner--tl"></span>
+      <span class="intro__corner intro__corner--tr"></span>
+      <span class="intro__corner intro__corner--bl"></span>
+      <span class="intro__corner intro__corner--br"></span>
+    </div>
+
+    <div class="intro__hud" aria-hidden="true">
+      <span>NEXUS // BOOT SEQUENCE</span>
+      <span>SYS.2026 / CAMPUS-NET</span>
+      <span>31.2304&deg; N 121.4737&deg; E</span>
+      <span>AI SOCIETY / v1.0.0</span>
+    </div>
+
+    <div class="intro__core">
+      <div class="intro__mark-wrap" aria-hidden="true">
+        <span class="intro__ring intro__ring--2"></span>
+        <span class="intro__ring intro__ring--1"></span>
+        <span class="intro__ring intro__ring--pulse"></span>
+        <svg class="intro__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="trace" pathLength="1" d="M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z"/>
+          <path class="fill" d="M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z"/>
+        </svg>
+      </div>
+
+      <p class="intro__word" aria-hidden="true">
+        <span class="ch" style="--i: 0">N</span><span class="ch" style="--i: 1">E</span><span class="ch" style="--i: 2">X</span><span class="ch" style="--i: 3">U</span><span class="ch" style="--i: 4">S</span><span class="ch ch--accent" style="--i: 5">/</span><span class="ch ch--accent" style="--i: 6">A</span><span class="ch ch--accent" style="--i: 7">I</span>
+      </p>
+
+      <span class="intro__rule" aria-hidden="true"></span>
+
+      <p class="intro__sub">
+        <span>大学人工智能协会</span><i>/</i><span><em>UNIVERSITY AI SOCIETY</em></span>
+      </p>
+
+      <div class="intro__console" data-intro-console aria-hidden="true"></div>
+
+      <div class="intro__meter" aria-hidden="true">
+        <span class="intro__meter-track"><span class="intro__meter-fill" data-intro-fill></span></span>
+        <span class="intro__meter-num" data-intro-num>000</span>
+      </div>
+    </div>
+
+    <button class="intro__skip" type="button" data-intro-skip aria-label="跳过开屏动画，直接进入网站">
+      <span>跳过</span><b>SKIP</b>
+    </button>
+  </div>
   <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
   <a class="skip-link" href="#main">跳到主要内容</a>
 
@@ -671,8 +760,8 @@
             </a>
             <a class="notice-row" href="events.html#honor">
               <span class="notice-date">11.13</span>
-              <span class="notice-tag">SIGNUP</span>
-              <p>荣耀技术分享公开课开放报名：11.13 宝山校区 J202，AI PC 技术与创新赛宣讲。</p>
+              <span class="notice-tag">NOTICE</span>
+              <p>学院公开课：11.13 宝山校区 J202，AI PC 技术与创新赛宣讲，参加方式见学院通知。</p>
               <span class="notice-arrow">↗</span>
             </a>
             <a class="notice-row" href="events.html#calendar">
@@ -1024,5 +1113,6 @@
   <script src="theme.js" defer></script>
   <script src="nav.js" defer></script>
   <script src="particles.js" defer></script>
+  <script src="intro.js" defer></script>
 </body>
 </html>
